@@ -191,6 +191,7 @@ pub mod helper {
     use command_nexus::models::units::naval::{Ship,ShipTrait};
     use command_nexus::models::units::armored::{Armored,ArmoredTrait};
     use command_nexus::models::position::{Vec3,Position};
+    use command_nexus::models::banner::{Banner,BannerLevel};
     use command_nexus::constants::{
         SCALE, OFFSET, RANGE_SCALE_FACTOR, OFFSET_DISTANCE,
         // Air unit kill scores
@@ -218,7 +219,16 @@ pub mod helper {
         SAVAGE_COAST_FLAG_X,
         SAVAGE_COAST_FLAG_Y,
         SAVAGE_COAST_FLAG_Z,
-        TOLERANCE
+        TOLERANCE,
+
+            // Banner Design constants
+        DESIGN_BASIC, DESIGN_STRIPE, DESIGN_CHEVRON, DESIGN_SHIELD, DESIGN_STAR, DESIGN_FLAME, DESIGN_DRAGON,
+        
+        // Banner Color constants
+        COLOR_BRONZE, COLOR_SILVER, COLOR_GOLD, COLOR_PLATINUM, COLOR_EMERALD, COLOR_RUBY, COLOR_DIAMOND,
+        
+        // Required level constants
+        RECRUIT_REQ, SOLDIER_REQ, VETERAN_REQ, ELITE_REQ, COMMANDER_REQ, LEGEND_REQ, MYTHIC_REQ
 
     };
     
@@ -307,6 +317,24 @@ pub mod helper {
 
             let unit_state: UnitState = world.read_model((game_id,index,unit_id));
             unit_state
+        }
+
+        fn get_banner_level(points: u32) -> BannerLevel {
+            if points < 1000 {
+                BannerLevel::Recruit
+            } else if points < 2500 {
+                BannerLevel::Soldier
+            } else if points < 5000 {
+                BannerLevel::Veteran
+            } else if points < 10000 {
+                BannerLevel::Elite
+            } else if points < 20000 {
+                BannerLevel::Commander
+            } else if points < 50000 {
+                BannerLevel::Legend
+            } else {
+                BannerLevel::Mythic
+            }
         }
 
         fn find_player(world: WorldStorage, game: Game, account: ContractAddress) -> Option<Player> {
@@ -773,6 +801,95 @@ pub mod helper {
             y_diff <= TOLERANCE && 
             z_diff <= TOLERANCE
         }
+
+                // Get Recruit Banner
+        fn get_recruit_banner() -> Banner {
+            Banner {
+                id: 1,
+                design: DESIGN_BASIC,
+                color: COLOR_BRONZE,
+                level: BannerLevel::Recruit,
+                required_player_level: RECRUIT_REQ,
+            }
+        }
+
+        // Get Soldier Banner
+        fn get_soldier_banner() -> Banner {
+            Banner {
+                id: 2,
+                design: DESIGN_STRIPE,
+                color: COLOR_BRONZE,
+                level: BannerLevel::Soldier,
+                required_player_level: SOLDIER_REQ,
+            }
+        }
+
+        // Get Veteran Banner
+        fn get_veteran_banner() -> Banner {
+            Banner {
+                id: 3,
+                design: DESIGN_CHEVRON,
+                color: COLOR_SILVER,
+                level: BannerLevel::Veteran,
+                required_player_level: VETERAN_REQ,
+            }
+        }
+
+        // Get Elite Banner
+        fn get_elite_banner() -> Banner {
+            Banner {
+                id: 4,
+                design: DESIGN_SHIELD,
+                color: COLOR_GOLD,
+                level: BannerLevel::Elite,
+                required_player_level: ELITE_REQ,
+            }
+        }
+
+        // Get Commander Banner
+        fn get_commander_banner() -> Banner {
+            Banner {
+                id: 5,
+                design: DESIGN_STAR,
+                color: COLOR_PLATINUM,
+                level: BannerLevel::Commander,
+                required_player_level: COMMANDER_REQ,
+            }
+        }
+
+        // Get Legend Banner
+        fn get_legend_banner() -> Banner {
+            Banner {
+                id: 6,
+                design: DESIGN_FLAME,
+                color: COLOR_EMERALD,
+                level: BannerLevel::Legend,
+                required_player_level: LEGEND_REQ,
+            }
+        }
+
+        // Get Mythic Banner
+        fn get_mythic_banner() -> Banner {
+            Banner {
+                id: 7,
+                design: DESIGN_DRAGON,
+                color: COLOR_DIAMOND,
+                level: BannerLevel::Mythic,
+                required_player_level: MYTHIC_REQ,
+            }
+        }
+
+        // Helper function to get banner by level
+        fn get_banner_by_level(level: BannerLevel) -> Banner {
+            match level {
+                BannerLevel::Recruit => Self::get_recruit_banner(),
+                BannerLevel::Soldier => Self::get_soldier_banner(),
+                BannerLevel::Veteran => Self::get_veteran_banner(),
+                BannerLevel::Elite => Self::get_elite_banner(),
+                BannerLevel::Commander =>Self::get_commander_banner(),
+                BannerLevel::Legend => Self::get_legend_banner(),
+                BannerLevel::Mythic => Self::get_mythic_banner(),
+            }       }
 
     }
 }

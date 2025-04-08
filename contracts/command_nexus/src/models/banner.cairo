@@ -1,4 +1,4 @@
-#[derive(Serde, Copy, Drop, PartialEq, Introspect)]
+#[derive(Serde, Copy, Drop, PartialEq,Introspect)]
 pub enum BannerLevel {
     Recruit,
     Soldier,
@@ -10,9 +10,8 @@ pub enum BannerLevel {
 }
 
 
-#[derive(Copy, Drop, Serde, Introspect)]
+#[derive(Copy, Drop, Serde,Introspect)]
 pub struct Banner {
-    #[key]
     pub id: u32,
     pub design: u16,
     pub color: u32,
