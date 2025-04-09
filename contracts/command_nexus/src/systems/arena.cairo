@@ -102,12 +102,9 @@ mod arena {
 
             if nexus_commander.score == 0 {
                 
-
                 let n_commander: Commander = self.commander_register(caller);
 
-                println!("{}",n_commander.banner.id);
-
-               // world.write_model(@n_commander);
+                world.write_model(@n_commander);
 
             }
 
@@ -175,7 +172,7 @@ mod arena {
 
                 let n_commander = self.commander_register(caller);
 
-               //world.write_model(@n_commander);
+                 world.write_model(@n_commander);
 
             }
 

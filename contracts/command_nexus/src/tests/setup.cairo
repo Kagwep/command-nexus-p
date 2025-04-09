@@ -20,6 +20,7 @@ pub mod setup {
     use command_nexus::systems::nexus::{nexus, INexusDispatcher, INexusDispatcherTrait};
     use command_nexus::models::units::infantry::{Infantry,m_Infantry};
     use command_nexus::models::units::armored::{Armored,m_Armored};
+    use command_nexus::models::commander::{Commander,m_Commander};
 
     use dojo::world::storage::WorldStorage;
 
@@ -61,6 +62,7 @@ pub mod setup {
                 TestResource::Model(m_UnitState::TEST_CLASS_HASH),
                 TestResource::Model(m_Infantry::TEST_CLASS_HASH),
                 TestResource::Model(m_Armored::TEST_CLASS_HASH),
+                TestResource::Model(m_Commander::TEST_CLASS_HASH),
                 TestResource::Contract(arena::TEST_CLASS_HASH),
                 TestResource::Contract(nexus::TEST_CLASS_HASH)
             ].span()

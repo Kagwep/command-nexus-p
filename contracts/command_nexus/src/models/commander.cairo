@@ -1,7 +1,7 @@
 use starknet::ContractAddress;
 use command_nexus::models::banner::{Banner, BannerLevel};
 
-#[derive(Copy,Drop,Serde)]
+#[derive(Copy, Drop, Serde)]
 #[dojo::model]
 pub struct Commander {
     #[key]

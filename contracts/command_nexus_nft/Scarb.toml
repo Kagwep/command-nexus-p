@@ -1,0 +1,25 @@
+[package]
+name = "command_nexus_nft"
+version = "0.1.0"
+edition = "2024_07"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
+
+
+
+[dependencies]
+starknet = ">=2.11.3"
+alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "e1b080577aaa6889116fc8be5dde72b2fd21e397" }
+openzeppelin = { git = "https://github.com/openzeppelin/cairo-contracts", tag = "v0.16.0"}
+graffiti = { git = "https://github.com/ponderingdemocritus/graffiti", rev = "bc569531791dbc71c6cd8d9bc154c34eedad31fe" }
+
+[[target.starknet-contract]]
+build-external-contracts = ["openzeppelin_presets::account::AccountUpgradeable"]
+
+[dev-dependencies]
+cairo_test = "2.11.3"
+# Enable Sierra codegen.
+sierra = true
+
+# Enable CASM codegen.
+casm = false
