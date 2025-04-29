@@ -480,195 +480,302 @@ export const RegionColorSystem = {
 
 
 export const guideContent = [
-  {
-      gType: 'section',
-      data: {
-          title: 'Welcome to Tutorial',
-          content: 'Learn how to control and manage your troops effectively in this guide.'
-      }
-  },
-  {
-      gType: 'image',
-      data: {
-          url: '/images/im1.PNG',
-          width: '400px',
-          height: '225px'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Basic Controls',
-          content: 'Your control panel contains several important buttons: Deploy (bottom), Heal and Boost (center), and an Info guide (top). Each serves a crucial function in managing your units.'
-      }
-  },
-  {
-      gType: 'image',
-      data: {
-          url: '/images/sec4.PNG',
-          width: '400px',
-          height: '225px'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Deploy Units',
-          content: 'The large green circle at the bottom is your Deploy button. Click it to place new units on the battlefield. This is your primary way of building your army.'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Unit Management',
-          content: 'In the center panel, you have two key abilities:\n\n• Heal (♥): Select an injured unit and press Heal to restore their health\n• Boost (⚡): Increases unit energy for special actions\n\nRemember: Every action consumes energy, so manage your resources wisely!'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Help & Information',
-          content: 'The "i" button at the top right will open this guide anytime you need to review the controls. Use it to refresh your memory about game mechanics and unit management.'
-      }
-  },
-  {
-      gType: 'image',
-      data: {
-          url: '/images/sec3.PNG', // The unit actions control panel image
-          width: '400px',
-          height: '100px'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Unit States',
-          content: 'Units can be assigned different states:\n\n• Attack: Click unit, select attack, then click target unit\n• Defend: Holds position and engages nearby enemies\n• Patrol: Guards an area in a repeated pattern\n• Stealth: Moves quietly, harder to detect'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Movement',
-          content: 'To move a unit:\n1. Select your unit\n2. Look for the crosshair cursor (+)\n3. Click the destination\n\nIMPORTANT: Each movement costs energy. Plan your moves carefully and avoid long distances in single moves.'
-      }
-  },
-  {
-      gType: 'image',
-      data: {
-          url: '/images/sec6.PNG',
-          width: '400px',
-          height: '225px'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Base Insignias',
-          content: ''
-      }
-  },
-  {
-      gType: 'image',
-      data: {
-          url: '/images/sec2.PNG', // Unit info panes image
-          width: '400px',
-          height: '225px'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Unit Information Display',
-          content: 'Click on any unit to view its detailed information. The info panes show crucial stats about your selected unit:'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Unit Stats',
-          content: '• Health: Current unit health points\n• Energy: Available energy for actions\n• Accuracy: Hit chance in combat\n• Range: Attack and visibility range\n• Unit ID: Unique identifier\n• Player: Owner of the unit\n• Mode: Current unit state (Attack/Defend/Patrol/Stealth/Move)'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Live Updates',
-          content: 'The information panes update in real-time as you select different units or when unit stats change during gameplay. Keep an eye on energy levels - they affect your unit\'s ability to perform actions!'
-      }
-  },
-  {
-      gType: 'image',
-      data: {
-          url: '/images/sec1.PNG', // Commander info bar image
-          width: '1200px',
-          height: '40px'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Commander Information',
-          content: 'The top bar shows your commander status. From left to right:\n\n• Commander Name\n• Home Base (with insignia)\n• Military Rank\n• Captured Flags Count\n• Available Boosts\n• Score\n• Available Commands\n• Turn Status Button'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Command System',
-          content: 'Commands are your action points for troop control:\n\n• Start with 8 commands in your first turn\n• Renewed to 3 commands in subsequent turns\n• Each action type (Attack/Defend/Patrol/Move) can only be used once before switching\n• Plan your actions carefully - commands are precious resources!'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Turn Management',
-          content: 'The End Turn button indicates your turn status:\n\n• Green: It\'s your turn - take your actions\n• Red: Opponent\'s turn - plan your next moves\n\nStrategic Tip: Always monitor your units\' health and energy levels when planning commands. Efficient command usage is key to victory!'
-      }
-  },    {
-      gType: 'section',
-      data: {
-          title: 'Combat Mechanics',
-          content: 'Unit states affect combat performance:\n\n• Attack Bonuses:\n  - Attacking mode: +10 attack\n  - Stealth mode: +15 attack (highest)\n  - Recon mode: +5 attack\n\n• Defense Bonuses:\n  - Defending mode: +15 defense (highest)\n  - Patrol mode: +5 defense\n  - Stealth mode: +10 defense'
-      }
-  },
-  {
-    gType: 'image',
-    data: {
-        url: '/images/sec5.PNG',
-        width: '400px',
-        height: '225px'
+    {
+        gType: 'section',
+        data: {
+            title: 'Welcome to Tutorial',
+            content: 'Learn how to control and manage your troops effectively in this guide.'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/im1.PNG',
+            width: '400px',
+            height: '225px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Wallet Connection',
+            content: 'Before starting gameplay, you need to connect your  wallet to access all features and store your in-game assets.'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/wallet_connect.PNG',
+            width: '400px',
+            height: '225px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Connecting Your Wallet',
+            content: 'Follow these steps to connect your wallet:\n\n1. Click the "Connect Wallet" button in the top-right corner\n2. Confirm the connection request in your wallet\n4. Once connected, your wallet address will appear in the header'
+        }
+    },
+    {
+        gType: 'video',
+        data: {
+            url: 'https://res.cloudinary.com/dydj8hnhz/video/upload/v1745601573/pjmbbkndbs26amb3uzmy.mp4',
+            title: 'Wallet Connection Tutorial',
+            width: '560px',
+            height: '315px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Cartridge Controller Integration',
+            content: 'The Cartridge Controller allows you to manage your in-game assets and connect your wallet seamlessly:'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/cartridge_controller.png',
+            width: '400px',
+            height: '225px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Using the Cartridge Controller',
+            content: 'The Cartridge Controller provides these wallet functions:\n\n• Asset Management: View and organize your NFT units\n• Token Balance: Check your in-game currency\n• Transaction History: Review past transactions\n• Disconnect: Safely disconnect your wallet when finished'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Wallet Security',
+            content: 'Important security tips:\n\n• Never share your wallet seed phrase\n• Always verify transaction details before signing\n• Disconnect your wallet when not playing\n• Use a dedicated gaming wallet separate from your main holdings'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Basic Controls',
+            content: 'Your control panel contains several important buttons: Deploy (bottom), Heal and Boost (center), and an Info guide (top). Each serves a crucial function in managing your units.'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/sec4.PNG',
+            width: '400px',
+            height: '225px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Deploy Units',
+            content: 'The large green circle at the bottom is your Deploy button. Click it to place new units on the battlefield. This is your primary way of building your army.'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Unit Management',
+            content: 'In the center panel, you have two key abilities:\n\n• Heal (♥): Select an injured unit and press Heal to restore their health\n• Boost (⚡): Increases unit energy for special actions\n\nRemember: Every action consumes energy, so manage your resources wisely!'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Help & Information',
+            content: 'The "i" button at the top right will open this guide anytime you need to review the controls. Use it to refresh your memory about game mechanics and unit management.'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/sec3.PNG', // The unit actions control panel image
+            width: '400px',
+            height: '100px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'NFT Unit Integration',
+            content: 'With your wallet connected, you can:\n\n• Import NFT units from your wallet collection\n• Deploy unique NFT units with special abilities\n• Earn new NFT units through gameplay achievements\n• Trade units with other players on the marketplace'
+        }
+    },
+    {
+        gType: 'video',
+        data: {
+            url: 'https://www.youtube.com/embed/nft_unit_deployment',
+            title: 'NFT Unit Deployment Tutorial',
+            width: '560px',
+            height: '315px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Unit States',
+            content: 'Units can be assigned different states:\n\n• Attack: Click unit, select attack, then click target unit\n• Defend: Holds position and engages nearby enemies\n• Patrol: Guards an area in a repeated pattern\n• Stealth: Moves quietly, harder to detect'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Movement',
+            content: 'To move a unit:\n1. Select your unit\n2. Look for the crosshair cursor (+)\n3. Click the destination\n\nIMPORTANT: Each movement costs energy. Plan your moves carefully and avoid long distances in single moves.'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/sec6.PNG',
+            width: '400px',
+            height: '225px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Base Insignias',
+            content: ''
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/sec2.PNG', // Unit info panes image
+            width: '400px',
+            height: '225px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Unit Information Display',
+            content: 'Click on any unit to view its detailed information. The info panes show crucial stats about your selected unit:'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Unit Stats',
+            content: '• Health: Current unit health points\n• Energy: Available energy for actions\n• Accuracy: Hit chance in combat\n• Range: Attack and visibility range\n• Unit ID: Unique identifier\n• Player: Owner of the unit\n• Mode: Current unit state (Attack/Defend/Patrol/Stealth/Move)'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Live Updates',
+            content: 'The information panes update in real-time as you select different units or when unit stats change during gameplay. Keep an eye on energy levels - they affect your unit\'s ability to perform actions!'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/sec1.PNG', // Commander info bar image
+            width: '1200px',
+            height: '40px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Commander Information',
+            content: 'The top bar shows your commander status. From left to right:\n\n• Commander Name\n• Home Base (with insignia)\n• Military Rank\n• Captured Flags Count\n• Available Boosts\n• Score\n• Available Commands\n• Turn Status Button'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Wallet Balance Display',
+            content: 'Next to your commander info, you\'ll see your wallet status including:\n\n• Connected wallet address (abbreviated)\n• In-game token balance\n• Special item count\n'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Command System',
+            content: 'Commands are your action points for troop control:\n\n• Start with 8 commands in your first turn\n• Renewed to 3 commands in subsequent turns\n• Each action type (Attack/Defend/Patrol/Move) can only be used once before switching\n• Plan your actions carefully - commands are precious resources!'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Turn Management',
+            content: 'The End Turn button indicates your turn status:\n\n• Green: It\'s your turn - take your actions\n• Red: Opponent\'s turn - plan your next moves\n\nStrategic Tip: Always monitor your units\' health and energy levels when planning commands. Efficient command usage is key to victory!'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Combat Mechanics',
+            content: 'Unit states affect combat performance:\n\n• Attack Bonuses:\n  - Attacking mode: +10 attack\n  - Stealth mode: +15 attack (highest)\n  - Recon mode: +5 attack\n\n• Defense Bonuses:\n  - Defending mode: +15 defense (highest)\n  - Patrol mode: +5 defense\n  - Stealth mode: +10 defense'
+        }
+    },
+    {
+        gType: 'image',
+        data: {
+            url: '/images/sec5.PNG',
+            width: '400px',
+            height: '225px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Marketplace Integration',
+            content: 'Access the in-game marketplace through your Cartridge Controller to:\n\n• Purchase premium units with connected wallet\n• Sell unwanted units for tokens\n• Trade units with other players\n• View current marketplace trends and prices'
+        }
+    },
+    {
+        gType: 'video',
+        data: {
+            url: 'https://www.youtube.com/embed/marketplace_tutorial',
+            title: 'Marketplace & Trading Tutorial',
+            width: '560px',
+            height: '315px'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Victory Conditions',
+            content: 'Win the game by achieving either:\n\n• Capture 5 flags and have atleast 3 kills \n• Eliminate 5 enemy units\n\nStrategize your approach based on the battlefield situation!'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Points & Modes',
+            content: 'Points earned vary by unit states:\n\nHighest Reward Targets:\n• Stealthed units: 40 points\n• Defending units: 35 points\n• Attacking units: 30 points\n\nAttacking From:\n• Stealth: 40 points\n• Recon: 30 points\n• Idle: 25 points\n\nTip: Stealth operations offer the highest risk/reward ratio!'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Ranks & Progression',
+            content: 'Earn points to progress through ranks:\n\n• Recruit → Soldier → Veteran → Elite\n• Commander → Legend → Mythic\n\nEarn points through strategic combat and flag captures!'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Boost System',
+            content: 'Boost resource management:\n\n• Earn boost by:\n  - Eliminating enemy units\n  - Capturing flags\n\n• Spend boost on:\n  - Healing units (20 boost)\n  - Boosting unit energy (20 boost)\n\nStrategic tip: Save boosts for critical moments in battle!'
+        }
+    },
+    {
+        gType: 'section',
+        data: {
+            title: 'Wallet Rewards',
+            content: 'Earn blockchain rewards directly to your connected wallet:\n• Achievement NFTs for completing challenges\n• Season rewards for consistent participation\n• Special event rewards during tournaments'
+        }
     }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Victory Conditions',
-          content: 'Win the game by achieving either:\n\n• Capture 5 flags\n• Eliminate 5 enemy units\n\nStrategize your approach based on the battlefield situation!'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Points & Modes',
-          content: 'Points earned vary by unit states:\n\nHighest Reward Targets:\n• Stealthed units: 40 points\n• Defending units: 35 points\n• Attacking units: 30 points\n\nAttacking From:\n• Stealth: 40 points\n• Recon: 30 points\n• Idle: 25 points\n\nTip: Stealth operations offer the highest risk/reward ratio!'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Ranks & Progression',
-          content: 'Earn points to progress through ranks:\n\n• Recruit → Soldier → Veteran → Elite\n• Commander → Legend → Mythic\n\nEarn points through strategic combat and flag captures!'
-      }
-  },
-  {
-      gType: 'section',
-      data: {
-          title: 'Boost System',
-          content: 'Boost resource management:\n\n• Earn boost by:\n  - Eliminating enemy units\n  - Capturing flags\n\n• Spend boost on:\n  - Healing units (20 boost)\n  - Boosting unit energy (20 boost)\n\nStrategic tip: Save boosts for critical moments in battle!'
-      }
-  }
-];
+  ];
 
 
 

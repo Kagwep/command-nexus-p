@@ -205,6 +205,8 @@ mod nexus {
 
     use dojo::model::{ModelStorage, ModelValueStorage};
     use dojo::event::EventStorage;
+
+    use command_nexus::models::commander::Commander;
     
 
     use command_nexus::models::units::air::{
@@ -983,6 +985,21 @@ mod nexus {
                 game.winner = player.address;
                 game.over = true;
 
+                let mut nexus_commander: Commander = world.read_model(caller);
+
+                let total_points = player.player_score.score + nexus_commander.score;
+
+                let nc_level = HelperTrait::get_banner_level(total_points);
+
+                let new_nc_lever = HelperTrait::get_banner_by_level(nc_level);
+
+                nexus_commander.kills += player.player_score.kills.into();
+                nexus_commander.deaths += player.player_score.deaths.into();
+                nexus_commander.score = total_points;
+                nexus_commander.banner  =  new_nc_lever;
+
+                world.write_model(@nexus_commander);
+
                 world.write_model(@game);
 
             }
@@ -1570,6 +1587,22 @@ mod nexus {
 
                             game.winner = player.address;
                             game.over = true;
+
+                            let mut nexus_commander: Commander = world.read_model(player.address);
+
+                            let total_points = player.player_score.score + nexus_commander.score;
+            
+                            let nc_level = HelperTrait::get_banner_level(total_points);
+            
+                            let new_nc_lever = HelperTrait::get_banner_by_level(nc_level);
+            
+                            nexus_commander.kills += player.player_score.kills.into();
+                            nexus_commander.deaths += player.player_score.deaths.into();
+                            nexus_commander.score = total_points;
+                            nexus_commander.banner  =  new_nc_lever;
+            
+                            world.write_model(@nexus_commander);
+
 
                             world.write_model(@game);
 

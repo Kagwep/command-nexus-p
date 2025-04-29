@@ -75,3 +75,44 @@ pub const SAVAGE_COAST_FLAG_Z: u256 = 578960446186580977117854925043439539266349
 pub const BOOSTER: u32 = 20;
 
 pub  const TOLERANCE: u256 = 500000000000000; // 0.0005 * SCALE (5 * 10^14)
+
+// Banner Constants
+
+// Banner Level Point Thresholds
+pub  const RECRUIT_THRESHOLD: u32 = 0;
+pub  const SOLDIER_THRESHOLD: u32 = 2000;
+pub  const VETERAN_THRESHOLD: u32 = 5000;
+pub  const ELITE_THRESHOLD: u32 = 12000;
+pub  const COMMANDER_THRESHOLD: u32 = 25000;
+pub  const LEGEND_THRESHOLD: u32 = 50000;
+pub  const MYTHIC_THRESHOLD: u32 = 100000;
+
+// Banner Design IDs
+pub  const DESIGN_STRIPE: u16 = 2;
+pub  const DESIGN_CHEVRON: u16 = 3;
+pub  const DESIGN_BASIC: u16 = 1;
+pub  const DESIGN_CROSSED: u16 = 4;
+pub  const DESIGN_SHIELD: u16 = 5;
+pub  const DESIGN_STAR: u16 = 6;
+pub  const DESIGN_FLAME: u16 = 7;
+pub  const DESIGN_DRAGON: u16 = 8;
+
+// Banner Colors (in RGBA format)
+// Banner Colors
+pub const COLOR_BRONZE: u32 = 0xCD7F32FF;
+pub const COLOR_SILVER: u32 = 0xC0C0C0FF;
+pub const COLOR_GOLD: u32 = 0xFFD700FF;
+pub const COLOR_PLATINUM: u32 = 0xE5E4E2FF;
+pub const COLOR_EMERALD: u32 = 0x50C878FF;
+pub const COLOR_RUBY: u32 = 0xE0115FFF;
+pub const COLOR_DIAMOND: u32 = 0xB9F2FFFF;
+
+
+// Required player levels for each banner
+pub const RECRUIT_REQ: u8 = 1;
+pub const SOLDIER_REQ: u8 = 5;
+pub const VETERAN_REQ: u8 = 10;
+pub const ELITE_REQ: u8 = 20;
+pub const COMMANDER_REQ: u8 = 35;
+pub const LEGEND_REQ: u8 = 50;
+pub const MYTHIC_REQ: u8 = 75;

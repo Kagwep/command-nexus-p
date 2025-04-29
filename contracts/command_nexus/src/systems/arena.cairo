@@ -31,6 +31,7 @@ mod arena {
     use command_nexus::models::game::{Game, GameTrait, GameAssert};
     use command_nexus::models::player::{Player, PlayerTrait, PlayerAssert};
     use command_nexus::utils::helper::{HelperTrait};
+    use command_nexus::models::commander::{Commander, CommanderTrait};
     use command_nexus::models::battlefield::{BattlefieldName,UrbanBattlefieldTrait,BattlefieldNameTrait, WeatherEffectTrait,UrbanBattlefield,WeatherEffect};
 
     use dojo::model::{ModelStorage, ModelValueStorage};
@@ -72,11 +73,8 @@ mod arena {
 
             let player_home_base: BattlefieldName = game.assign_home_base();
 
-        
             //set!(world, (game));
-
             world.write_model(@game);
-
 
             // [Effect] Player
             let player: Player = PlayerTrait::new(
@@ -84,7 +82,6 @@ mod arena {
             );
 
            // set!(world, (player));
-
             world.write_model(@player);
 
             let size = player_home_base.get_size();
@@ -101,12 +98,19 @@ mod arena {
                 size: size,
             );
 
-            //set!(world,(urban_battle_field));
+            let nexus_commander: Commander = world.read_model(caller);
 
+            if nexus_commander.score == 0 {
+                
+                let n_commander: Commander = self.commander_register(caller);
+
+                world.write_model(@n_commander);
+
+            }
+
+            //set!(world,(urban_battle_field));
             world.write_model(@urban_battle_field);
 
-   
-            
 
             // [Return] Game id
             game_id
@@ -160,6 +164,18 @@ mod arena {
 
             //set!(world,(urban_battle_field));
             world.write_model(@urban_battle_field);
+
+            let nexus_commander: Commander = world.read_model(caller);
+
+
+            if nexus_commander.score == 0 {
+
+                let n_commander = self.commander_register(caller);
+
+                 world.write_model(@n_commander);
+
+            }
+
         }
 
 
@@ -351,6 +367,19 @@ mod arena {
         /// can't be const.
         fn world_default(self: @ContractState) -> dojo::world::WorldStorage {
             self.world(@"command_nexus")
+        }
+
+        fn commander_register (self: @ContractState, caller: ContractAddress ) -> command_nexus::models::commander::Commander{
+
+            let banner_level = HelperTrait::get_banner_level(0);
+
+            let level = HelperTrait::get_banner_by_level(banner_level);
+
+             let nexus_commander = command_nexus::models::commander::CommanderTrait::new(caller, level);
+
+            
+                nexus_commander
+            
         }
 
     }
