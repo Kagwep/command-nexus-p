@@ -244,6 +244,8 @@ useEffect(() => {
       const totalSeconds = hours ? hours * 3600 + minutes * 60 : minutes * 60;
       let result = await (await client).arena.create(account as Account, player_name, /* price */ 0, /* penalty*/ totalSeconds);
 
+      console.log("trying to ",result)
+
     } catch (error: any) {
       toast({
         variant: 'destructive',
