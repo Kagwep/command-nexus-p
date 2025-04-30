@@ -154,7 +154,7 @@ const Lobby: React.FC = () => {
         await (await client).arena.leave(account as Account, game_id);
       }
 
-      set_game_id(0);
+      set_game_id(-1);
       set_game_state(GameState.MainMenu);
     } catch (error: any) {
       toast({
