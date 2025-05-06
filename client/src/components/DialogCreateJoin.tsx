@@ -145,7 +145,7 @@ export function DialogCreateJoin({
                       id="minutes"
                       className="w-full bg-black/50 border border-green-500/30 text-green-400 
                                placeholder-green-700 font-mono focus:border-green-400 
-                               focus:ring-1 focus:ring-green-400"
+                               focus:ring-1 focus:ring-green-400 hidden"
                       type="number"
                       placeholder="Minutes"
                       value={minutes}
@@ -158,7 +158,7 @@ export function DialogCreateJoin({
               <div className="military-input-group">
                 <Label 
                   htmlFor="limit" 
-                  className="text-sm font-mono text-green-400 mb-2 block"
+                  className="text-sm font-mono text-green-400 mb-2 block hidden"
                 >
                   TACTICAL TURN LIMIT
                 </Label>
@@ -168,7 +168,7 @@ export function DialogCreateJoin({
                     id="limit"
                     className="w-full bg-black/50 border border-green-500/30 text-green-400 
                              placeholder-green-700 font-mono focus:border-green-400 
-                             focus:ring-1 focus:ring-green-400"
+                             focus:ring-1 focus:ring-green-400 hidden"
                     type="number"
                     placeholder="Maximum turns"
                     value={limit}

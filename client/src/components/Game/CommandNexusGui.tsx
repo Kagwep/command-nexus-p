@@ -12,6 +12,7 @@ import { GameState } from "./GameState";
 import { StarknetErrorParser } from "./ErrorParser";
 import { ScanEye } from "lucide-react";
 import { TutorialUI } from "./TutorialUI";
+import { default as MainGameState } from '@/utils/gamestate';
 
 interface TopBarConfig {
     TEXT_COLOR: string;
@@ -121,7 +122,11 @@ export default class CommandNexusGui {
     private unitRows: Map<string, GUI.TextBlock> = new Map();
     private scoreRows: Map<string, GUI.TextBlock> = new Map();
     private supplyRows: Map<string, GUI.TextBlock> = new Map();
-    constructor(scene: Scene,client: any,game: any,player: Player, getAccount:  () => AccountInterface | Account ,getGameState: () => GameState) {
+    private resetStore;
+    private set_game_state: (game_state: MainGameState) => void
+    private set_game_id: (game_id: number) => void
+
+    constructor(scene: Scene,client: any,game: any,player: Player, getAccount:  () => AccountInterface | Account ,getGameState: () => GameState,resetStore: () => void,set_game_state: (game_state: MainGameState) => void,set_game_id: (game_id: number) => void) {
         this.gui = GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, scene);
         this.createTopBar();
         //this.createMainMenuButton();
@@ -151,6 +156,7 @@ export default class CommandNexusGui {
         this.createOpponentsButton();
         this.createNexusOpponentsPanel();
         this.createRegionDisplay();
+        this.createAbortMissionButton();
        
     }
 
@@ -175,6 +181,144 @@ export default class CommandNexusGui {
         this.innerArc.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
         this.gui.addControl(this.innerArc);
     }
+
+    // Create an Abort Mission button with BabylonJS GUI
+private createAbortMissionButton() {
+
+    // Create a stack panel for organization
+    const panel = new StackPanel();
+    panel.width = "220px";
+    panel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+    panel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
+    panel.top = "-30px";
+    panel.left = "400px"
+ 
+    this.gui.addControl(panel);
+    
+    // Create a red button with warning styling
+    const abortButton = Button.CreateSimpleButton("abortMission", "ABORT MISSION");
+    abortButton.width = "100px";
+    abortButton.height = "30px";
+    abortButton.color = "white";
+    abortButton.fontSize = 10;
+    abortButton.fontWeight = "bold";
+    abortButton.cornerRadius = 10;
+    abortButton.background = "darkred";
+    abortButton.hoverCursor = "pointer";
+    
+
+    // Add hover and click effects
+    abortButton.onPointerEnterObservable.add(() => {
+        abortButton.background = "red";
+        abortButton.scaleX = 1.05;
+        abortButton.scaleY = 1.05;
+    });
+    
+    abortButton.onPointerOutObservable.add(() => {
+        abortButton.scaleX = 1;
+        abortButton.scaleY = 1;
+    });
+    
+    // Add click event
+    abortButton.onPointerClickObservable.add(() => {
+        // Create confirmation dialog
+        const dialog = new Rectangle("dialog");
+        dialog.width = "400px";
+        dialog.height = "200px";
+        dialog.cornerRadius = 15;
+        dialog.color = "white";
+        dialog.thickness = 2;
+        dialog.background = "#300000";
+        this.gui.addControl(dialog);
+        
+        // Add warning text
+        const text = new TextBlock();
+        text.text = "WARNING: Abort mission sequence initiated.\nConfirm abort?";
+        text.color = "white";
+        text.fontSize = 12;
+        text.fontStyle = "bold";
+        text.textWrapping = true;
+        dialog.addControl(text);
+        
+        // Add confirm/cancel buttons
+        const confirmButton = Button.CreateSimpleButton("confirm", "CONFIRM");
+        confirmButton.width = "80px";
+        confirmButton.height = "30px";
+        confirmButton.top = "40px";
+        confirmButton.left = "-80px";
+        confirmButton.color = "white";
+        confirmButton.fontSize = 10;
+        confirmButton.cornerRadius = 10;
+        confirmButton.background = "red";
+        confirmButton.onPointerClickObservable.add(async () => {
+            // Execute abort mission logic here
+            console.log("Mission aborted!");
+            dialog.dispose();
+            
+            // Show abort confirmation
+            const abortMessage = new TextBlock();
+            abortMessage.text = "MISSION ABORTED";
+            abortMessage.color = "red";
+            abortMessage.fontSize = 12;
+            abortMessage.fontStyle = "bold";
+            abortMessage.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+            abortMessage.verticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
+            this.gui.addControl(abortMessage);
+            
+            // Make the message fade out
+            let fadeAlpha = 1;
+            const fadeInterval = setInterval(() => {
+                fadeAlpha -= 0.01;
+                if (fadeAlpha <= 0) {
+                    clearInterval(fadeInterval);
+                    this.gui.removeControl(abortMessage);
+                } else {
+                    abortMessage.alpha = fadeAlpha;
+                }
+            }, 50);
+
+            const result  = await (await this.client).arena.delete(this.getAccount(), this.getGameState().game.game_id)
+                        
+            //console.log(result)
+
+            if (result && result.transaction_hash){
+             this.showToastSide(`Mission Abort Successful Commander`, ToastType.Success);
+             this.resetStore();
+             this.set_game_id(-1);
+             this.set_game_state(MainGameState.MainMenu);
+            }else{
+             const errorMessage = StarknetErrorParser.parseError(result);
+             //console.log(errorMessage)
+             this.showToastSide(errorMessage,ToastType.Error)
+            }
+
+
+
+        });
+        dialog.addControl(confirmButton);
+        
+        const cancelButton = Button.CreateSimpleButton("cancel", "CANCEL");
+        cancelButton.width = "80px";
+        cancelButton.height = "30px";
+        cancelButton.color = "white";
+        cancelButton.top = "40px";
+        cancelButton.fontSize = 10;
+        cancelButton.left = "80px";
+        cancelButton.cornerRadius = 10;
+        cancelButton.background = "#444444";
+        cancelButton.onPointerClickObservable.add(() => {
+            dialog.dispose();
+        });
+        dialog.addControl(cancelButton);
+    });
+    
+    panel.addControl(abortButton);
+    
+    return abortButton;
+}
+
+// Usage example:
+// const abortButton = createAbortMissionButton(scene);
 
     private initializeBoxInfo(): void {
         if (!this.rect) {

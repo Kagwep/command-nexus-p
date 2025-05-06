@@ -79,11 +79,15 @@ const { state: nstate, refetch } = useAllEntities();
     return account
   }
 
+  const resetStore = () : void => {
+    nstate.clear();
+  }
+
   const state = useDojoStore((state) => state);
 
   const getGameState = () => nexusGameState ? nexusGameState.getGameState() : null;
   
-  const {getGui, gui, isGuiReady } = useCommandNexusGui(sceneRef.current, player, isItMyTurn, turn,game, players,client,getAccount,getGameState);
+  const {getGui, gui, isGuiReady } = useCommandNexusGui(sceneRef.current, player, isItMyTurn, turn,game, players,client,getAccount,getGameState,resetStore,set_game_state,set_game_id);
 
 
   useEffect(() => {

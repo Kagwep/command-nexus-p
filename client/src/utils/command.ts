@@ -306,11 +306,11 @@ export const useAllEntities = (pollInterval = 5000) => {
               entityArray.forEach((entity) => {
                 if ('command_nexus-Game' in entity) {
                     const game = transformGame(entity);
-                    if (game) setGame(game);
+                    if (game.arena_host !== "0x0000000000000000000000000000000000000000000000000000000000000000") setGame(game);
                 }
                 if ('command_nexus-Player' in entity) {
                     const player = transformPlayer(entity);
-                    if (player) setPlayer(player);
+                    if (player.address !="0x0000000000000000000000000000000000000000000000000000000000000000") setPlayer(player);
                 }
                 if ('command_nexus-Infantry' in entity) {
                     const infantry = transformInfantry(entity);
