@@ -181,6 +181,28 @@ pub impl GameImpl of GameTrait {
             _ => panic(array!['Invalid base index']),
         }
     }
+
+    #[inline(always)]
+    fn re_asign_home_base(ref self:Game, battlefield: BattlefieldName){
+        match battlefield {
+            BattlefieldName::RadiantShores => {
+                self.available_home_bases.base1 = 1; 
+            },
+            BattlefieldName::Ironforge => {
+                self.available_home_bases.base2 = 2;
+                
+            },
+            BattlefieldName::Skullcrag => {
+                self.available_home_bases.base3 = 3;
+                
+            },
+            BattlefieldName::NovaWarhound => {
+                self.available_home_bases.base4 = 4;
+                
+            },
+            _ => panic(array!['Invalid base index']),
+        }
+    }
     /// Joins a game and returns the player index.
     /// # Arguments
     /// * `self` - The Game.

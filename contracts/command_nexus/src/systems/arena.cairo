@@ -267,6 +267,8 @@ mod arena {
 
             // [Effect] Update Game
             let last_index = game.kick(player.address);
+
+            game.re_asign_home_base(player.home_base);
             //set!(world, (game));
             world.write_model(@game);
 
@@ -283,7 +285,7 @@ mod arena {
 
             // [Effect] Update Player
             player.nullify();
-           // set!(world, (player));
+            // set!(world, (player));
              world.write_model(@player);
         }
 
@@ -311,6 +313,18 @@ mod arena {
             //set!(world, (game));
 
             world.write_model(@game);
+
+            let mut players = HelperTrait::players(world,game);
+            loop {
+                match players.pop_front() {
+                    Option::Some(player) => { 
+                        player.nullify();
+                        world.write_model(@player);
+                    
+                    },
+                    Option::None => { break; },
+                };
+            };
 
             // [Effect] Update Player
             player.nullify();

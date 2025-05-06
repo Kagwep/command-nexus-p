@@ -22,8 +22,9 @@ import { useAllEntities } from '../utils/command';
 import { getGame } from '../lib/utils';
 import { CommandNexusSchemaType, ModelsMapping } from '@/dojogen/models.gen';
 import { KeysClause, ParsedEntity, QueryBuilder, ToriiQueryBuilder } from '@dojoengine/sdk';
+import { PlaneRotationGizmo } from '@babylonjs/core';
 
-
+import {toast as stoast} from 'react-toastify'
 
 const Lobby: React.FC = () => {
   const {
@@ -41,7 +42,7 @@ const Lobby: React.FC = () => {
   const { set_game_state, set_game_id, game_id, round_limit } = useElementStore((state) => state);
   const { state: nstate, refetch } = useAllEntities(5000)
 
- 
+  
 
  const game = getGame(game_id,nstate.games);
 
@@ -117,6 +118,8 @@ const Lobby: React.FC = () => {
     }
   }, [game]);
 
+ 
+
   const isHost = (arena: string, address: string) => {
 
     return removeLeadingZeros(arena) === removeLeadingZeros(address);
@@ -153,8 +156,8 @@ const Lobby: React.FC = () => {
       } else {
         await (await client).arena.leave(account as Account, game_id);
       }
-
-      set_game_id(0);
+      nstate.clear();
+      set_game_id(-1);
       set_game_state(GameState.MainMenu);
     } catch (error: any) {
       toast({
@@ -166,10 +169,11 @@ const Lobby: React.FC = () => {
     }
   };
 
-  const kickPlayer = async (player_index: number, game_id: number) => {
+  const kickPlayer = async (player_index: number,player_address: string, game_id: number) => {
     try {
       setKickLoading(true);
       await (await client).arena.kick(account as Account, game_id, player_index);
+      nstate.removePlayer(player_address);
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -321,6 +325,26 @@ const Lobby: React.FC = () => {
 
                   
                   const baseName = baseNameMapping[base] || base;
+
+                  
+                    if (baseName === me.home_base as unknown as string){
+                                        // If player has a base and its status is not 0
+                      if (parseInt(status.toString()) !== 0) {
+
+                      console.log("You have been kicked out, removing from game");
+                      // Remove player from the game
+                      nstate.removePlayer(me.address);
+
+                      stoast.warning("You've been kicked from the game");
+
+                      set_game_state(GameState.MainMenu)
+                      set_game_id(-1)
+
+                    }
+                    }
+
+
+
                   
                   return (
                     <div 
@@ -353,7 +377,34 @@ const Lobby: React.FC = () => {
               </TableHeader>
               <TableBody>
               {Object.values(nstate.players)
-                .filter(player => Number(player.game_id) === Number(game.game_id)) // Filter players by game ID
+                  .filter((player: any) => {
+                    // Basic filtering for players in this game
+                    const inCurrentGame = (Number(player.game_id) === Number(game.game_id)) && 
+                                         player.address !== "0x0000000000000000000000000000000000000000000000000000000000000000";
+                    
+                    // Player removal logic (only for current player)
+                    if (inCurrentGame && player.address === me.address && 
+                        game.available_home_bases && player.home_base) {
+                      
+                      const playerBase = player.home_base.toString();
+                      
+                      // Check if player's base status is not 0 (kicked out)
+                      if (game.available_home_bases[playerBase] !== undefined && 
+                          parseInt(game.available_home_bases[playerBase].toString()) !== 0) {
+                        
+                        console.log("You have been kicked out, removing from game");
+                        // Handle player removal
+                        setTimeout(() => {
+                          nstate.removePlayer(me.address);
+                        }, 0);
+                        
+                        // Return false to filter this player out immediately
+                        return false;
+                      }
+                    }
+                    
+                    return inCurrentGame;
+                  })
                 .map((player) => (
                   <TableRow 
                     key={player.address} 
@@ -377,7 +428,7 @@ const Lobby: React.FC = () => {
                       {isHost(game.arena_host, me.address) && player.address !== me.address && (
                         <button
                           disabled={kickLoading}
-                          onClick={() => kickPlayer(Number(player.index), Number(game.game_id))}
+                          onClick={() => kickPlayer(Number(player.index),player.address, Number(game.game_id))}
                           className="relative group px-4 py-1"
                         >
                           <div className="absolute inset-0 bg-red-900/20 border border-red-500/30 

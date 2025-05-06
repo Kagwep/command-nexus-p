@@ -344,16 +344,19 @@ useEffect(() => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                    {Object.entries(nstate.games).map(([gameId, currentGame]) => {
+                    {Object.entries(nstate.games)
+                        .filter(([_, game]) => game.arena_host !== "0x0000000000000000000000000000000000000000000000000000000000000000")
+                        .map(([gameId, currentGame]) => {
                           return (
                             <GameRow 
                               key={gameId}
                               game={currentGame as Game}
                               setPlayerName={setPlayerName}
-                              nstates={nstate}                            />
+                              nstates={nstate}
+                            />
                           );
-
-                      })}
+                        })
+                      }
                     </TableBody>
                   </Table>
                 </div>

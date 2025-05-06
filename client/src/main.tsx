@@ -17,7 +17,7 @@ import { ApollClient } from "./utils/apollo/client.ts";
 import { ApolloProvider } from '@apollo/client';
 import { NetworkProvider } from "./context/NetworkContext.tsx";
 import AppRoot from "./AppRoot.tsx";
-
+import { ToastContainer } from 'react-toastify';
 
 /**
  * Initializes and bootstraps the Dojo application.
@@ -32,6 +32,7 @@ async function main() {
         <StrictMode>
             <ApolloProvider client={ApollClient}>
                <AppRoot />
+               <ToastContainer />
             </ApolloProvider>
         </StrictMode>
     );

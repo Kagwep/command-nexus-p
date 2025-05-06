@@ -6,8 +6,9 @@ import { Player } from '../../dojogen/models.gen';
 import { Account, AccountInterface } from 'starknet';
 import { useNetworkAccount } from '../../context/WalletContex';
 import { GameState } from './GameState';
+import { default as MainGameState } from '@/utils/gamestate';
 
-export const useCommandNexusGui = (scene: Scene | null, player: Player, isItMyTurn: boolean, turn: number,  game: any, players: Player[],client: any,getAccount: () => AccountInterface | Account,getGameState: () => GameState) => {
+export const useCommandNexusGui = (scene: Scene | null, player: Player, isItMyTurn: boolean, turn: number,  game: any, players: Player[],client: any,getAccount: () => AccountInterface | Account,getGameState: () => GameState,resetStore: () => void,set_game_state: (game_state: MainGameState) => void,set_game_id: (game_id: number) => void) => {
   const guiRef = useRef<CommandNexusGui | null>(null);
   const [isGuiReady, setIsGuiReady] = useState(false);
 
@@ -34,7 +35,7 @@ export const useCommandNexusGui = (scene: Scene | null, player: Player, isItMyTu
 
       // Create new GUI
       try {
-        guiRef.current = new CommandNexusGui(scene,client,game,player,getAccount,getGameState);
+        guiRef.current = new CommandNexusGui(scene,client,game,player,getAccount,getGameState,resetStore,set_game_state,set_game_id);
         setIsGuiReady(true);
         scene.onPointerDown = (evt, pickResult) => {
             if (pickResult.hit) {

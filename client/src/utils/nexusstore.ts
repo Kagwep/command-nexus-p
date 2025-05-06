@@ -13,6 +13,8 @@ type GameState = {
     setAbilityState: (abilityState: AbilityState) => void;
     setUnitState: (abilityState: UnitState) => void;
     setInfantry: (infantry: Infantry) => void;
+    removePlayer: (playerAddress: string) => void;
+    clear: () => void;
 
 };
 
@@ -58,6 +60,22 @@ export const useGameStore = create<GameState>((set) => ({
             ...state.unitState,
             [`${unitState.unit_id}`]: unitState
         }
+    })),
+
+    // Remove a specific player by address
+    removePlayer: (playerAddress: string) => set((state) => {
+        const newPlayers = { ...state.players };
+        delete newPlayers[playerAddress];
+        return { players: newPlayers };
+    }),
+
+    clear: () => set(() => ({
+        games: {},
+        players: {},
+        infantry: {},
+        unitAbilities: {},
+        abilityState: {},
+        unitState: {}
     })),
     
 }));
