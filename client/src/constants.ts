@@ -5,9 +5,9 @@ import { MANIFEST_DEV, MANIFEST_MAINNET, MANIFEST_SEPOLIA } from '../dojoConfig'
 // Sepolia network constants
 export const SEPOLIA = {
     TORII_RPC_URL: "https://api.cartridge.gg/x/starknet/sepolia",
-    TORII_URL: "https://api.cartridge.gg/x/command-nexus-20/torii",
-    NEXUS_ADDRESS: "0x5c50a92b3a9608da4fddc267438f705860a8921b5d7d228d1a2bb722e854b6c",
-    ARENA_ADDRESS: "0x1e822ce8ed4b685dc790e5a93b42f7a3158a741cb9558a64347bd68432a7174",
+    TORII_URL: "https://api.cartridge.gg/x/nexus-1/torii",
+    NEXUS_ADDRESS: "0x208b1fe3c916660ee0047d40be697c218152c2a0b9ffbf231ddf787adeb2c9f",
+    ARENA_ADDRESS: "0x214d02a2a3f292258e6dc938e034d8fd9241946fe470a1563d8a340da353953",
     WORLD_ADDRESS: MANIFEST_SEPOLIA.world.address,
     MANIFEST: MANIFEST_SEPOLIA, 
   };
@@ -15,9 +15,9 @@ export const SEPOLIA = {
   // Mainnet network constants
   export const MAINNET = {
     TORII_RPC_URL: "https://api.cartridge.gg/x/starknet/mainnet", 
-    TORII_URL: "https://api.cartridge.gg/x/command-1/torii", 
-    NEXUS_ADDRESS: "0x661643d649a8c16bf5420dcc655476e2be87b26fec1d5ac5dc69550750bd1bb", 
-    ARENA_ADDRESS: "0x2cf9980aa91cfe9acea13a7ee90d6897aede4923dffe55907a3342abb0bd54b", 
+    TORII_URL: "https://api.cartridge.gg/x/command-2/torii", 
+    NEXUS_ADDRESS: "0x1213b6603b66f5e4c579a611f3087591e47c2e378e3b255c6f4237ac836368a", 
+    ARENA_ADDRESS: "0x74475067fc9f4eabd14ef2523cae24d06988a1a8f6b32ada588f14b95df8b38", 
     WORLD_ADDRESS: MANIFEST_MAINNET.world.address,
     MANIFEST: MANIFEST_MAINNET, 
   };

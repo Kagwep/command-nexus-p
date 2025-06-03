@@ -8,8 +8,8 @@ private_key = ""
 rpc_url = "https://api.cartridge.gg/x/starknet/mainnet"
 
 [world]
-seed = "command_nexus_1"
-name = "Command Nexus"
+seed = "command_nexus_prime_mainnet_one"
+name = "Command Nexus Mainnet"
 description = "Become a commander"
 cover_uri = "file://assets/bg.webp"
 website = "https://command-nexus.astro-arch.com"

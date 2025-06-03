@@ -317,7 +317,7 @@ mod arena {
             let mut players = HelperTrait::players(world,game);
             loop {
                 match players.pop_front() {
-                    Option::Some(player) => { 
+                    Option::Some(mut player) => { 
                         player.nullify();
                         world.write_model(@player);
                     

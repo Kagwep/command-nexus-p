@@ -1,8 +1,8 @@
 {
   "world": {
     "class_hash": "0x75fc75bcd1a7f8b4bf64b74978b0f89c8cee44bb755c1dae6f82284756451ec",
-    "address": "0x20b5ce5dab4fb81b7d82b7d55dcff2e46397bdaaac9ebdc9fe0d1b05370d131",
-    "seed": "command_nexus",
+    "address": "0x471de7370807980e39b5dbe6d68a4fa82043a28da5c8cb39466cece685c0cb4",
+    "seed": "command_nexus_1",
     "name": "Command Nexus",
     "entrypoints": [
       "uuid",
@@ -1312,8 +1312,8 @@
   },
   "contracts": [
     {
-      "address": "0x6bd090cc8b4a9630192908cb296fc13b524815bd77b8c706d7507dea3fa20c",
-      "class_hash": "0x48e8052fd5a738649df09a483f5bcef466fe4051a54f0e84c8f679cb70738cb",
+      "address": "0x71a7145d5c6d90f65f27096d2f75864ffef9c1cd6609970f29824e63d458af4",
+      "class_hash": "0x7623f2d398ab3e9b2c853b8eb8fd17449a76e24759da571ed228d1d6293453c",
       "abi": [
         {
           "type": "impl",
@@ -1632,7 +1632,7 @@
       ]
     },
     {
-      "address": "0x6776aa0bd618ed42323994dc413664a87efe5bac88c7d840412af5fa96e37a9",
+      "address": "0x1fc5f4b0d2b9e9feb744a70474a85f7958a4d205f9ab7f400df11deca9192f8",
       "class_hash": "0xff189baecc409c5056d9453f80352eb3f756e363936483016d419f3c28e01c",
       "abi": [
         {
