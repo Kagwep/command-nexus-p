@@ -112,6 +112,7 @@ const AppInitializer: React.FC<AppInitializerProps> = ({clientFn,skipNetworkSele
         }
 
         const initializeSDK = async () => {
+            console.log("initializing sdk ......")
             const sdk = await init<CommandNexusSchemaType>(
                 {
                     client: {
@@ -137,6 +138,7 @@ const AppInitializer: React.FC<AppInitializerProps> = ({clientFn,skipNetworkSele
                 setIsLoading(true);
                 
                 if (network === 'katana') {
+                    console.log("shouldnt be here")
                     // Step 1: Setup burner wallet
                     setInitializationStep(1);
                     const manager = await setupBurnerManager(dojoConfig);
