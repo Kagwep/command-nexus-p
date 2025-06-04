@@ -259,23 +259,13 @@ export const useAllEntities = (pollInterval = 5000) => {
                 ModelsMapping.UnitState
             ];
                 
-                if (game_id !== undefined && game_id >= 0) {
-                    // If we have a game_id, filter by it
-                    queryBuilder = new ToriiQueryBuilder()
-                        .withClause(
-                            new ClauseBuilder()
-                                .keys(modelsToQuery, [String(game_id)], "VariableLen")
-                                .build()
-                        );
-                } else {
-                    // Otherwise, get all entities
-                    queryBuilder = new ToriiQueryBuilder()
-                        .withClause(
-                            new ClauseBuilder()
-                                .keys([], [undefined], "VariableLen")
-                                .build()
-                        );
-                }
+                                 // Otherwise, get all entities
+            queryBuilder = new ToriiQueryBuilder()
+                .withClause(
+                    new ClauseBuilder()
+                        .keys([], [undefined], "VariableLen")
+                        .build()
+                );
                 
                 const res = await sdk.client.getEntities(queryBuilder.build());
                 
