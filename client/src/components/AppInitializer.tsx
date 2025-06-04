@@ -114,8 +114,6 @@ const AppInitializer: React.FC<AppInitializerProps> = ({clientFn,skipNetworkSele
         }
 
         const initializeSDK = async () => {
-            console.log("initializing sdk ......")
-             console.log(network,dojoConfig,dojoConfig.relayUrl,networkConstants.TORII_URL)
             const sdk = await init<CommandNexusSchemaType>(
                 {
                     client: {
