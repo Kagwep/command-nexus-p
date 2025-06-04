@@ -8,8 +8,8 @@ private_key = ""
 rpc_url = "https://api.cartridge.gg/x/starknet/sepolia"
 
 [world]
-seed = "command_nexus_5"
-name = "Command Nexus"
+seed = "command_nexus_prime_one"
+name = "Command Nexus Prime"
 description = "Become a commander"
 cover_uri = "file://assets/bg.webp"
 website = "https://command-nexus.vercel.app/"
