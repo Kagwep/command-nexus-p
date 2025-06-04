@@ -125,9 +125,9 @@ const AppInitializer: React.FC<AppInitializerProps> = ({clientFn,skipNetworkSele
                         worldAddress: dojoConfig.manifest.world.address,
                     },
                     domain: {
-                        name: "WORLD_NAME",
+                        name: "Command Nexus",
                         version: "1.0",
-                        chainId: "KATANA",
+                        chainId: `SN_${network.toUpperCase()}`,
                         revision: "1",
                     },
                 },
