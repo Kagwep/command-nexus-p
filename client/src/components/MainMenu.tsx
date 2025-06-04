@@ -41,23 +41,21 @@ const MainMenu: React.FC = () => {
 
   const { account, address, status, isConnected } = useNetworkAccount();
 
-  const state = useDojoStore((state) => state);
-  const entities = useDojoStore((state) => state.entities);
-
-  // const playerpol = usePlayerPolling(sdk.client)
-  // const gamepol = useGamePolling(sdk.client)
 
   const [showLeaderboard, setShowLeaderboard] = useState(false);
 
  
 
-  const { state: nstate, refetch } = useAllEntities();
+  const { state, refetch } = useAllEntities();
 
-  console.log(nstate.games,nstate.players,nstate.abilityState,nstate.infantry);
+
 
   const { entities: playerent, isLoading } = usePlayerStore()
 
   const { entities: gameEntities, isLoading: gameIsLoading } = useGameStore()
+
+  const games = state.games;
+  const players = state.players;
 
 
   useEffect(() => {
@@ -76,48 +74,6 @@ const MainMenu: React.FC = () => {
     fetchToriiClause().then(console.log);
   });
 
-
-useEffect(() => {
-  let unsubscribe: (() => void) | undefined;
-
-  const keys = game_id >= 0 ? [String(game_id)] : []
-
-  const subscribe = async (account: AccountInterface) => {
-      const [initialData, subscription] = await sdk.subscribeEntityQuery({
-          query: new ToriiQueryBuilder()
-              .withClause(
-                  // Querying Moves and Position models that has at least [account.address] as key
-                  KeysClause(
-                      [ModelsMapping.Game, ModelsMapping.Player, ModelsMapping.AbilityState, ModelsMapping.Infantry, ModelsMapping.UnitState],
-                      keys,
-                      "VariableLen"
-                  ).build()
-              )
-              .includeHashedKeys(),
-          callback: ({ error, data }) => {
-              if (error) {
-                  console.error("Error setting up entity sync:", error);
-              } else if (data && data[0].entityId !== "0x0") {
-                  state.updateEntity(data[0]);
-              }
-          },
-      });
-
-      state.setEntities(initialData);
-
-      unsubscribe = () => subscription.cancel();
-  };
-
-  if (account) {
-      subscribe(account);
-  }
-
-  return () => {
-      if (unsubscribe) {
-          unsubscribe();
-      }
-  };
-}, [sdk, account,game_id]);
 
 
 
@@ -173,7 +129,7 @@ const setStates = () => {
   const gamesById = {};
 
   // Assuming games and players are Records
-Object.entries(nstate.games).forEach(([gameId, currentGame]) => {
+Object.entries(games).forEach(([gameId, currentGame]) => {
   //console.log(removeLeadingZeros(currentGame.arena_host) === account?.address)
   gamesById[Number(currentGame.game_id)] = currentGame;
   if (removeLeadingZeros(currentGame.arena_host) === account?.address) {
@@ -185,7 +141,7 @@ Object.entries(nstate.games).forEach(([gameId, currentGame]) => {
   }
 });
 
-Object.entries(nstate.players).forEach(([playerId, currentPlayer]) => {
+Object.entries(players).forEach(([playerId, currentPlayer]) => {
   if (removeLeadingZeros(currentPlayer.address) === account?.address) {
     
     const playerGame = gamesById[Number(currentPlayer.game_id)];
@@ -204,7 +160,7 @@ Object.entries(nstate.players).forEach(([playerId, currentPlayer]) => {
 
 useEffect(() => {
 setStates();
-}, [nstate, account?.address]);
+}, [state, account?.address]);
 
 useEffect(() => {
 if (game) {
@@ -277,7 +233,7 @@ useEffect(() => {
             <span className="mr-2">◈</span> VIEW LEADERBOARD <span className="ml-2">◈</span>
           </button>
 
-          { Object.keys(nstate.games).length === 0 ? (
+          { Object.keys(state.games).length === 0 ? (
             <div className="text-center py-12 bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-2xl">
                   <div className="relative border border-green-500/30 bg-black/40 p-8 rounded-lg mb-2">
                       <div className="flex flex-col items-center space-y-4">
@@ -344,7 +300,7 @@ useEffect(() => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                    {Object.entries(nstate.games)
+                    {Object.entries(games)
                         .filter(([_, game]) => game.arena_host !== "0x0000000000000000000000000000000000000000000000000000000000000000")
                         .map(([gameId, currentGame]) => {
                           return (
@@ -352,7 +308,7 @@ useEffect(() => {
                               key={gameId}
                               game={currentGame as Game}
                               setPlayerName={setPlayerName}
-                              nstates={nstate}
+                              nstates={state}
                             />
                           );
                         })
@@ -400,7 +356,7 @@ useEffect(() => {
     <LeaderboardModal 
       isOpen={showLeaderboard} 
       onClose={() => setShowLeaderboard(false)} 
-      players={nstate.players} 
+      players={state.players} 
       gameId="12345" 
     />
   )}
