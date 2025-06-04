@@ -128,7 +128,7 @@ const AppInitializer: React.FC<AppInitializerProps> = ({clientFn,skipNetworkSele
                     },
                 },
             );
-            
+        console.log(sdk)
         setSdk(sdk);
         }
 
