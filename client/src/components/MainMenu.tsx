@@ -13,7 +13,7 @@ import { bigIntAddressToString, removeLeadingZeros } from '../utils/sanitizer';
 import { CommandNexusSchemaType, Game, ModelsMapping } from '../dojogen/models.gen';
 import Navbar from './Navbar';
 import { useGameStore, usePlayerStore } from '../utils/entitityStore';
-import { useGamePolling, usePlayerPolling } from '../hooks/useEntityPolling ';
+// import { useGamePolling, usePlayerPolling } from '../hooks/useEntityPolling ';
 import { useEntityStore } from '../hooks/useEntityStore';
 import { useDojoSDK } from '@dojoengine/sdk/react';
 import { useAllEntities } from '../utils/command';
@@ -44,8 +44,8 @@ const MainMenu: React.FC = () => {
   const state = useDojoStore((state) => state);
   const entities = useDojoStore((state) => state.entities);
 
-  const playerpol = usePlayerPolling(sdk.client)
-  const gamepol = useGamePolling(sdk.client)
+  // const playerpol = usePlayerPolling(sdk.client)
+  // const gamepol = useGamePolling(sdk.client)
 
   const [showLeaderboard, setShowLeaderboard] = useState(false);
 
