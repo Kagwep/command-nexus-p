@@ -75,6 +75,8 @@ const AppInitializer: React.FC<AppInitializerProps> = ({clientFn,skipNetworkSele
 
     const { network,dojoConfig } = useNetwork();
 
+    console.log(network)
+
     const [sdk, setSdk] = useState<SDK<CommandNexusSchemaType>|null>(null);
 
 
