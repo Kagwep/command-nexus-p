@@ -12,7 +12,7 @@ import { Account, AccountInterface, addAddressPadding } from 'starknet';
 import { bigIntAddressToString, removeLeadingZeros } from '../utils/sanitizer';
 import { CommandNexusSchemaType, Game, ModelsMapping } from '../dojogen/models.gen';
 import Navbar from './Navbar';
-import { useGameStore, usePlayerStore } from '../utils/entitityStore';
+// import { useGameStore, usePlayerStore } from '../utils/entitityStore';
 // import { useGamePolling, usePlayerPolling } from '../hooks/useEntityPolling ';
 import { useEntityStore } from '../hooks/useEntityStore';
 import { useDojoSDK } from '@dojoengine/sdk/react';
@@ -49,10 +49,6 @@ const MainMenu: React.FC = () => {
   const { state, refetch } = useAllEntities();
 
 
-
-  const { entities: playerent, isLoading } = usePlayerStore()
-
-  const { entities: gameEntities, isLoading: gameIsLoading } = useGameStore()
 
   const games = state.games;
   const players = state.players;
