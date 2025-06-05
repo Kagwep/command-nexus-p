@@ -237,7 +237,7 @@ class NexusUnitManager {
             radius: 0.3,
             height: 0.01,
             maxAcceleration: 200.0,
-            maxSpeed: 12,
+            maxSpeed: 25,
             collisionQueryRange: 0.5,
             pathOptimizationRange: 0.2,
             separationWeight: 1.0
