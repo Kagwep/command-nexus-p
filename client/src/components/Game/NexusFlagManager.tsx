@@ -8,11 +8,11 @@ import { bigintToU256 } from '@/lib/lib_utils/starknet';
 import { sceneUboDeclaration } from '@babylonjs/core/Shaders/ShadersInclude/sceneUboDeclaration';
 
 // Constants for positions
-export const RADIANT_SHORES_POSITION = new Vector3(-113.93625811395006, 0.2321734670549631, 219.11772991590624);
-export const IRONFORGE_POSITION = new Vector3(74.33719768521131, 0.2321734670549631, 269.60137678784145);
-export const SAVAGE_COAST_POSITION = new Vector3(-33.27912511926547, 0.2321734670549631, 102.75661677810596);
-export const NOVA_WARHOUND_POSITION = new Vector3(93.9453515129216, 0.2321734670549631, 2.5107717843192985);
-export const SKULLCRAG_POSITION = new Vector3(-250.75874226517567, 0.23217346705495956, 186.03813654706522);
+export const RADIANT_SHORES_POSITION = new Vector3(-113.93625811395006, 1.2321734670549631, 219.11772991590624);
+export const IRONFORGE_POSITION = new Vector3(74.33719768521131, 1.2321734670549631, 269.60137678784145);
+export const SAVAGE_COAST_POSITION = new Vector3(-33.27912511926547, 1.2321734670549631, 102.75661677810596);
+export const NOVA_WARHOUND_POSITION = new Vector3(93.9453515129216, 1.2321734670549631, 2.5107717843192985);
+export const SKULLCRAG_POSITION = new Vector3(-250.75874226517567, 1.23217346705495956, 186.03813654706522);
 
 // Enum for location names
 export enum NexusLocation {
@@ -134,7 +134,10 @@ export class NexusFlagManager {
      
         const pos: EncodedVector3 = { x, y, z };
 
+
         const startingPoint = positionDecoder(pos);
+
+        //startingPoint.y +=4;
 
         const clickedRegion = this.getClickedRegion(startingPoint);
 
