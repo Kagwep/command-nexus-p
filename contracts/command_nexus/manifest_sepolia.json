@@ -1,7 +1,7 @@
 {
   "world": {
     "class_hash": "",
-    "address": "",
+    "address": "0x3eaa0d92f202a7b5de5c3dfc05fbfc8b0ed32c73a7ab370bb25fbbefc7348f4",
     "seed": "command_nexus_prime_one",
     "name": "Command Nexus Prime",
     "entrypoints": [
