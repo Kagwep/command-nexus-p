@@ -15,7 +15,7 @@ export const SEPOLIA = {
   // Mainnet network constants
   export const MAINNET = {
     TORII_RPC_URL: "https://api.cartridge.gg/x/starknet/mainnet", 
-    TORII_URL: "https://api.cartridge.gg/x/command-2/torii", 
+    TORII_URL: "https://api.cartridge.gg/x/main-command-2/torii", 
     NEXUS_ADDRESS: "0x1213b6603b66f5e4c579a611f3087591e47c2e378e3b255c6f4237ac836368a", 
     ARENA_ADDRESS: "0x74475067fc9f4eabd14ef2523cae24d06988a1a8f6b32ada588f14b95df8b38", 
     WORLD_ADDRESS: MANIFEST_MAINNET.world.address,
